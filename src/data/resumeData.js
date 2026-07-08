@@ -72,7 +72,7 @@ export const projects = [
     status: 'DEPLOYED',
     stack: ['React 19', 'Vite', 'Java 21', 'Spring Boot 4', 'PostgreSQL', 'JWT'],
     github: 'https://github.com/shmadake/half-life-frontend',
-    demo: 'https://shmadake-half-life.vercel.app',
+    demo: 'https://half-life-frontend.vercel.app',
     metrics: [
       { value: '100%', label: 'server-resolved, user-scoped data' },
       { value: '24h', label: 'stateless JWT session expiry' },
@@ -88,7 +88,7 @@ export const projects = [
     status: 'DEPLOYED',
     stack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Tailwind CSS'],
     github: 'https://github.com/shmadake/forum',
-    demo: 'https://shmadake-forum.vercel.app',
+    demo: 'https://forum-ashen.vercel.app',
     metrics: [
       { value: '7', label: 'topic categories' },
       { value: 'MERN', label: 'full-stack' },

@@ -62,7 +62,7 @@ export default function Contact() {
           </a>
           <span className="text-border">/</span>
           <a href="/Satyraj_Madake_Resume.pdf" download className="hover:text-signal transition-colors">
-            Resume (PDF)
+            Résumé (PDF)
           </a>
         </div>
       </div>

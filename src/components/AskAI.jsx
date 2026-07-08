@@ -1,76 +1,76 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react'
 
 const STARTER_PROMPTS = [
-  "What has he worked on recently?",
+  'What has he worked on recently?',
   "What's his tech stack?",
-  "Is he open to opportunities?",
-];
+  'Is he open to opportunities?',
+]
 
 export default function AskAI() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState([
     {
-      role: "assistant",
+      role: 'assistant',
       content:
         "Hi, I'm an AI assistant trained on Satyraj's resume. Ask me anything about his experience, skills, or projects.",
     },
-  ]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const scrollRef = useRef(null);
+  ])
+  const [input, setInput] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const scrollRef = useRef(null)
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
-  }, [messages, loading]);
+  }, [messages, loading])
 
   const sendMessage = async (text) => {
-    const content = text.trim();
+    const content = text.trim()
 
-    if (!content || loading) return;
+    if (!content || loading) return
 
-    const nextMessages = [...messages, { role: "user", content }];
+    const nextMessages = [...messages, { role: 'user', content }]
 
-    setMessages(nextMessages);
-    setInput("");
-    setLoading(true);
-    setError(null);
+    setMessages(nextMessages)
+    setInput('')
+    setLoading(true)
+    setError(null)
 
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
+      const res = await fetch('/api/chat', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           messages: nextMessages,
         }),
-      });
+      })
 
-      const data = await res.json();
+      const data = await res.json()
 
       if (!res.ok) {
-        throw new Error(data.error || "Something went wrong.");
+        throw new Error(data.error || 'Something went wrong.')
       }
 
       setMessages((prev) => [
         ...prev,
         {
-          role: "assistant",
+          role: 'assistant',
           content: data.reply,
         },
-      ]);
+      ])
     } catch (err) {
       setError(
         err.message ||
-          "Unable to connect to the AI service. Please try again later.",
-      );
+          'Unable to connect to the AI service. Please try again later.'
+      )
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <>
@@ -78,7 +78,7 @@ export default function AskAI() {
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-signal text-bg shadow-lg shadow-black/30 flex items-center justify-center hover:bg-signal/90 transition-colors"
-        aria-label={open ? "Close AI assistant" : "Ask AI about Satyraj"}
+        aria-label={open ? 'Close AI assistant' : 'Ask AI about Satyraj'}
       >
         {open ? (
           <svg
@@ -127,13 +127,13 @@ export default function AskAI() {
             {messages.map((m, i) => (
               <div
                 key={i}
-                className={m.role === "user" ? "text-right" : "text-left"}
+                className={m.role === 'user' ? 'text-right' : 'text-left'}
               >
                 <span
                   className={`inline-block px-3 py-2 rounded-lg max-w-[85%] text-sm leading-relaxed text-left ${
-                    m.role === "user"
-                      ? "bg-signal/15 text-text border border-signal/30"
-                      : "bg-elevated2 text-muted border border-border"
+                    m.role === 'user'
+                      ? 'bg-signal/15 text-text border border-signal/30'
+                      : 'bg-elevated2 text-muted border border-border'
                   }`}
                 >
                   {m.content}
@@ -173,8 +173,8 @@ export default function AskAI() {
 
           <form
             onSubmit={(e) => {
-              e.preventDefault();
-              sendMessage(input);
+              e.preventDefault()
+              sendMessage(input)
             }}
             className="flex items-center gap-2 p-3 border-t border-border"
           >
@@ -198,5 +198,5 @@ export default function AskAI() {
         </div>
       )}
     </>
-  );
+  )
 }
