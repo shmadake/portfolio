@@ -3,7 +3,7 @@ import Terminal from './Terminal'
 
 export default function Hero() {
   return (
-    <section id="top" className="relative pt-40 pb-28 px-6 overflow-hidden">
+    <section id="top" className="relative pt-28 pb-16 sm:pt-40 sm:pb-28 px-6 overflow-hidden">
       <div className="absolute inset-0 bg-grid bg-grid opacity-60 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]" />
 
       <div className="relative max-w-6xl mx-auto">
@@ -14,7 +14,7 @@ export default function Hero() {
 
         <div className="relative">
           <h1
-            className="font-display font-semibold text-5xl sm:text-6xl md:text-7xl leading-[1.05] text-text max-w-4xl animate-rise"
+            className="font-display font-semibold text-4xl sm:text-5xl md:text-6xl xl:text-7xl leading-[1.05] text-text max-w-4xl animate-rise"
             style={{ animationDelay: '80ms', animationFillMode: 'backwards' }}
           >
             {profile.name}
@@ -68,7 +68,7 @@ export default function Hero() {
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
-            Download résumé
+            Download resume
           </a>
           <a
             href={profile.github}

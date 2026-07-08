@@ -15,7 +15,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="px-6 py-28 border-t border-border relative overflow-hidden">
+    <section id="contact" className="px-6 py-16 sm:py-28 border-t border-border relative overflow-hidden">
       <div className="absolute inset-0 bg-grid bg-grid opacity-40 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black,transparent)]" />
       <div className="relative max-w-3xl mx-auto text-center">
         <div className="eyebrow text-signal mb-3">06 / contact</div>
@@ -48,21 +48,21 @@ export default function Contact() {
           </a>
         </div>
 
-        <div className="flex items-center justify-center gap-6 font-mono text-sm text-muted">
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-6 font-mono text-sm text-muted">
           <a href={profile.github} target="_blank" rel="noreferrer" className="hover:text-signal transition-colors">
             GitHub
           </a>
-          <span className="text-border">/</span>
+          <span className="text-border hidden sm:inline">/</span>
           <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-signal transition-colors">
             LinkedIn
           </a>
-          <span className="text-border">/</span>
+          <span className="text-border hidden sm:inline">/</span>
           <a href={profile.leetcode} target="_blank" rel="noreferrer" className="hover:text-signal transition-colors">
             LeetCode
           </a>
-          <span className="text-border">/</span>
+          <span className="text-border hidden sm:inline">/</span>
           <a href="/Satyraj_Madake_Resume.pdf" download className="hover:text-signal transition-colors">
-            Résumé (PDF)
+            Resume (PDF)
           </a>
         </div>
       </div>
